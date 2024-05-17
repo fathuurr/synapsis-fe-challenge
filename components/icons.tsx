@@ -17,6 +17,7 @@ import {
   LogIn,
   LucideIcon,
   LucideProps,
+  MessageCircle,
   Moon,
   MoreVertical,
   Pizza,
@@ -79,4 +80,5 @@ export const Icons = {
   ),
   twitter: Twitter,
   check: Check,
+  comment: MessageCircle,
 };
