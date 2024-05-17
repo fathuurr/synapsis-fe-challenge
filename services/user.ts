@@ -25,7 +25,7 @@ export async function addUser(data: any) {
       Accept: "application/json",
       "Content-Type": "application/json",
       Authorization:
-        "Bearer 6b53ac603389928548b909c723995f6698917452ef374cadcac8742a8e379c31",
+        "Bearer 6712132a3edb9c39eb9de3ab8e953118486a732de35a13b124fdd81e21d06229",
     },
   });
 
@@ -38,7 +38,7 @@ export async function updateUserById(data: IUser, id: string) {
       Accept: "application/json",
       "Content-Type": "application/json",
       Authorization:
-        "Bearer 6b53ac603389928548b909c723995f6698917452ef374cadcac8742a8e379c31",
+        "Bearer 6712132a3edb9c39eb9de3ab8e953118486a732de35a13b124fdd81e21d06229",
     },
   });
 
@@ -51,7 +51,7 @@ export async function deleteUserById(id: string) {
       Accept: "application/json",
       "Content-Type": "application/json",
       Authorization:
-        "Bearer 6b53ac603389928548b909c723995f6698917452ef374cadcac8742a8e379c31",
+        "Bearer 6712132a3edb9c39eb9de3ab8e953118486a732de35a13b124fdd81e21d06229",
     },
   });
 
