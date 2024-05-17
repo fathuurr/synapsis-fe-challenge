@@ -8,8 +8,17 @@ import {
 } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import { Heading } from "@/components/ui/heading";
+import {
+  Pagination,
+  PaginationContent,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "@/components/ui/pagination";
+import { ScrollArea } from "@/components/ui/scroll-area";
 import { toast } from "@/components/ui/use-toast";
-import { getAllPosts } from "@/services/posts";
+import { paginationPosts } from "@/services/posts";
 import { IPosts } from "@/types/posts";
 import { Loader2, ScrollText } from "lucide-react";
 import { useRouter } from "next/navigation";
@@ -20,14 +29,22 @@ export default function PagePost() {
   const [loading, setLoading] = useState(true);
   const { push } = useRouter();
 
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
+  const itemsPerPage = 20;
+
   useEffect(() => {
     const fetchDataPosts = async () => {
       setLoading(true);
 
       try {
-        const res = await getAllPosts();
+        const res = await paginationPosts(
+          currentPage.toString(),
+          itemsPerPage.toString(),
+        );
 
         setPosts(res);
+        setTotalPages(res.length);
       } catch (error: any) {
         toast({
           title: error,
@@ -40,7 +57,11 @@ export default function PagePost() {
     };
 
     fetchDataPosts();
-  }, []);
+  }, [currentPage]);
+
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+  };
 
   return (
     <>
@@ -49,7 +70,7 @@ export default function PagePost() {
           <Heading title={`Post`} description="Show all posts here" />
         </div>
 
-        <section className="container mx-auto">
+        <ScrollArea className="container mx-auto h-[calc(85vh-220px)]">
           {loading ? (
             <div className="flex items-center justify-center mt-10">
               <Loader2 className="animate-spin" size={50} />
@@ -85,7 +106,37 @@ export default function PagePost() {
               );
             })
           )}
-        </section>
+        </ScrollArea>
+
+        <Pagination>
+          <PaginationContent>
+            <PaginationItem>
+              <PaginationPrevious
+                className={`${
+                  currentPage === 1
+                    ? "pointer-events-none opacity-50"
+                    : "cursor-pointer"
+                }`}
+                onClick={() => handlePageChange(currentPage - 1)}
+              />
+            </PaginationItem>
+
+            <PaginationItem>
+              <PaginationLink> {currentPage}</PaginationLink>
+            </PaginationItem>
+
+            <PaginationItem>
+              <PaginationNext
+                onClick={() => handlePageChange(currentPage + 1)}
+                className={`${
+                  currentPage === totalPages
+                    ? "pointer-events-none opacity-50"
+                    : "cursor-pointer"
+                }`}
+              />
+            </PaginationItem>
+          </PaginationContent>
+        </Pagination>
       </div>
     </>
   );

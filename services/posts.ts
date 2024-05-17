@@ -11,6 +11,14 @@ export async function getAllPosts() {
   return response.data;
 }
 
+export async function paginationPosts(page: string, perPage: string) {
+  const response = await axios.get(
+    `${URL}/${version}/posts?page=${page}&per_page=${perPage}`,
+  );
+
+  return response.data;
+}
+
 export async function getPostsById(id: string) {
   const response = await axios.get(`${URL}/${version}/posts/${id}`);
 
