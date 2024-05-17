@@ -11,12 +11,14 @@ import { Heading } from "@/components/ui/heading";
 import { toast } from "@/components/ui/use-toast";
 import { getAllPosts } from "@/services/posts";
 import { IPosts } from "@/types/posts";
-import { Loader2 } from "lucide-react";
+import { Loader2, ScrollText } from "lucide-react";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 export default function PagePost() {
   const [posts, setPosts] = useState<IPosts[]>([]);
   const [loading, setLoading] = useState(true);
+  const { push } = useRouter();
 
   useEffect(() => {
     const fetchDataPosts = async () => {
@@ -66,7 +68,16 @@ export default function PagePost() {
                           Posted by User: {item.user_id}
                         </p>
 
-                        <p className="mt-5"> View Details </p>
+                        <div className="mt-5">
+                          <Button
+                            size={"sm"}
+                            variant={"outline"}
+                            onClick={() => push(`/posts/${item.id}`)}
+                          >
+                            Post Detail
+                            <ScrollText className="ml-2 text-emerald-500" />
+                          </Button>
+                        </div>
                       </AccordionContent>
                     </AccordionItem>
                   </Accordion>

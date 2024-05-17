@@ -33,22 +33,11 @@ export const navItems: NavItem[] = [
     icon: "user",
     label: "user",
   },
+
   {
-    title: "Employee",
-    href: "/employee",
-    icon: "employee",
-    label: "employee",
-  },
-  {
-    title: "Profile",
-    href: "/profile",
-    icon: "profile",
-    label: "profile",
-  },
-  {
-    title: "Comments",
-    href: "/comments",
-    icon: "comment",
-    label: "comment",
+    title: "Posts",
+    href: "/posts",
+    icon: "posts",
+    label: "posts",
   },
 ];

@@ -22,6 +22,7 @@ import {
   MoreVertical,
   Pizza,
   Plus,
+  ScrollText,
   Settings,
   SunMedium,
   Trash,
@@ -81,4 +82,5 @@ export const Icons = {
   twitter: Twitter,
   check: Check,
   comment: MessageCircle,
+  posts: ScrollText,
 };
