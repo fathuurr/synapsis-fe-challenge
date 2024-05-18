@@ -50,6 +50,7 @@ export function ModalAddUser({ onUserAdded }: any) {
         });
         onUserAdded(res);
         setIsOpen(false);
+        setAddData({ name: "", email: "", gender: "", status: "" }); // Clear form
       }
     } catch (error: any) {
       toast({

@@ -71,7 +71,7 @@ export default function UserPage() {
   }, [currentPage]);
 
   const addUserToList = (newUser: IUser) => {
-    setUser((prevUsers) => [...prevUsers, newUser]);
+    setUser((prevUsers) => [newUser, ...prevUsers]);
   };
 
   const handleDelete = async () => {
