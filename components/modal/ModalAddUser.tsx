@@ -36,6 +36,7 @@ export function ModalAddUser({ onUserAdded }: any) {
   const onSubmit = async () => {
     try {
       const res = await addUser(addData);
+
       if (res.error) {
         toast({
           title: "Error adding user",
@@ -47,8 +48,8 @@ export function ModalAddUser({ onUserAdded }: any) {
           title: "Successfully added",
           className: "bg-green-500",
         });
-        onUserAdded(res); // panggil callback dengan data pengguna baru
-        setIsOpen(false); // tutup modal
+        onUserAdded(res);
+        setIsOpen(false);
       }
     } catch (error: any) {
       toast({

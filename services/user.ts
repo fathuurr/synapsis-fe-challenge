@@ -14,6 +14,14 @@ export async function searchUsers(query: string) {
 export async function paginationUser(page: string, perPage: string) {
   const response = await axios.get(
     `${URL}/${version}/users?page=${page}&per_page=${perPage}`,
+    {
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization:
+          "Bearer 6712132a3edb9c39eb9de3ab8e953118486a732de35a13b124fdd81e21d06229",
+      },
+    },
   );
 
   return response.data;
