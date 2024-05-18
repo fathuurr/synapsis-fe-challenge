@@ -27,7 +27,7 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 1. After the application is running at localhost:3000, add the public API token available on the website GoREST. First, register on the website and then navigate to the login menu. Login using your preferred method, for instance, GitHub. Then, go to the 'Howdy!' menu -> API Tokens. In case your token is expired or unusable, acquire a new one.
 
-2. Edit `.env.local` to this : `NEXT_PUBLIC_API_URL = https://gorest.co.in/public`
+2. Edit `.env` to this : `NEXT_PUBLIC_API_URL = https://gorest.co.in/public`
 
 3. Once you obtain the token, modify the code located in the "services" folder and within the file user.ts. This file contains endpoints/APIs that require a bearer token for access. Modify the following section in user.ts:
 
