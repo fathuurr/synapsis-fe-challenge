@@ -6,7 +6,14 @@ const version = "v2";
 const URL = process.env.NEXT_PUBLIC_API_URL;
 
 export async function searchUsers(query: string) {
-  const response = await axios.get(`${URL}/${version}/users?name=${query}`);
+  const response = await axios.get(`${URL}/${version}/users?name=${query}`, {
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization:
+        "Bearer 6712132a3edb9c39eb9de3ab8e953118486a732de35a13b124fdd81e21d06229",
+    },
+  });
 
   return response.data;
 }
