@@ -26,7 +26,7 @@ export default function PagePost() {
       const res = await paginationPosts(page.toString(), perPage.toString());
 
       setPosts(res);
-      setTotalPages(res.length === 0 ? 1 : Math.ceil(res.length / perPage));
+      setTotalPages(res.length);
     } catch (error: any) {
       toast({
         title: error,

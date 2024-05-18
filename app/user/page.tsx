@@ -40,7 +40,7 @@ const UserPage = () => {
     try {
       const res = await paginationUser(page.toString(), perPage.toString());
       setUsers(res);
-      setTotalPages(res.length === 0 ? 1 : Math.ceil(res.length / perPage));
+      setTotalPages(res.length);
     } catch (error: any) {
       showErrorToast("Could not fetch users from API", error);
     } finally {
