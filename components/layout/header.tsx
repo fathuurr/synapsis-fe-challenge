@@ -1,4 +1,3 @@
-import ThemeToggle from "@/components/layout/ThemeToggle/theme-toggle";
 import { cn } from "@/lib/utils";
 import { MobileSidebar } from "./mobile-sidebar";
 import Link from "next/link";
@@ -28,10 +27,6 @@ export default function Header() {
         </div>
         <div className={cn("block lg:!hidden")}>
           <MobileSidebar />
-        </div>
-
-        <div className="flex items-center gap-2">
-          <ThemeToggle />
         </div>
       </nav>
     </div>

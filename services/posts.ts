@@ -1,4 +1,3 @@
-import { IPosts } from "@/types/posts";
 import axios from "axios";
 
 const version = "v2";

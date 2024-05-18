@@ -1,14 +1,9 @@
-import {
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { CommentSection } from "@/components/comments/CommentSection";
+import { PostBody } from "@/components/comments/PostBody";
+
 import { Heading } from "@/components/ui/heading";
 import { getCommentByPostId, getPostsById } from "@/services/posts";
-import { IComment, IPosts } from "@/types/posts";
-import { Mail, UserCircle } from "lucide-react";
+import { IPosts } from "@/types/posts";
 
 const PostDetail = async ({ params }: { params: { id: string } }) => {
   const postDataById: IPosts = await getPostsById(params.id);
@@ -21,45 +16,8 @@ const PostDetail = async ({ params }: { params: { id: string } }) => {
           <Heading title={postDataById?.title} />
         </div>
 
-        <section className="mt-10">
-          <p className="mt-10">{postDataById?.body}</p>
-
-          <p className="text-lg mt-3 text-emerald-600">
-            Posted by User: {postDataById?.user_id}
-          </p>
-
-          <p className="mt-10 text-xl font-semibold"> Comment </p>
-
-          {commentData?.length === 0 ? (
-            <>
-              <Card className="mt-5">
-                <CardContent className="p-5">
-                  <p className="text-lg">No comment yet</p>
-                </CardContent>
-              </Card>
-            </>
-          ) : (
-            commentData?.map((comment: IComment) => {
-              return (
-                <>
-                  <Card className="mt-5" key={comment?.id}>
-                    <CardHeader>
-                      <CardTitle className="text-lg font-medium flex">
-                        <UserCircle className="mr-2" /> {comment?.name}
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <p>{comment?.body}</p>
-                    </CardContent>
-                    <CardFooter className="font-light">
-                      <Mail className="mr-2" /> {comment?.email}
-                    </CardFooter>
-                  </Card>
-                </>
-              );
-            })
-          )}
-        </section>
+        <PostBody body={postDataById.body} userId={postDataById.user_id} />
+        <CommentSection comments={commentData} />
       </div>
     </>
   );

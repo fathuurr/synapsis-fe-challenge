@@ -1,4 +1,3 @@
-import Providers from "@/components/layout/providers";
 import { Toaster } from "@/components/ui/toaster";
 import "@uploadthing/react/styles.css";
 import type { Metadata } from "next";
@@ -10,8 +9,8 @@ import Header from "@/components/layout/header";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Next Shadcn",
-  description: "Basic dashboard with Next.js and Shadcn",
+  title: "Synapsis Test",
+  description: "Synapsis Frontend Challenge",
 };
 
 export default async function RootLayout({
@@ -24,13 +23,11 @@ export default async function RootLayout({
       <body className={`${inter.className} flex h-screen overflow-hidden`}>
         <Header />
 
-        <Providers>
-          <Toaster />
+        <Toaster />
 
-          <Sidebar />
+        <Sidebar />
 
-          <main className="w-full pt-16">{children}</main>
-        </Providers>
+        <main className="w-full pt-16">{children}</main>
       </body>
     </html>
   );
